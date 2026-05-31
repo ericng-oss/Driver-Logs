@@ -1,38 +1,32 @@
-// Driver Last 4 Weeks Widget
-// Google Sheet tab should have: Period | Heri | Udi | Grand Total
-
-const CSV_URL = "https://docs.google.com/spreadsheets/d/1SemeSAuE7FW4xEEj1jqn_vnI9Bd6gYCvcoHJxBmeUK4/edit?gid=1011119762#gid=1011119762";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/1SemeSAuE7FW4xEEj1jqn_vnI9Bd6gYCvcoHJxBmeUK4/export?format=csv&gid=1011119762";
 
 const widget = new ListWidget();
 widget.backgroundColor = new Color("#F7F4EF");
 widget.setPadding(16, 16, 16, 16);
+widget.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
 
 const title = widget.addText("DRIVER SUMMARY");
-title.font = Font.boldSystemFont(20);
-title.textColor = new Color("#1F2933");
+title.font = Font.boldSystemFont(22);
+title.textColor = new Color("#111827");
 title.centerAlignText();
 
 const subtitle = widget.addText("Last 4 Weeks");
-subtitle.font = Font.mediumSystemFont(14);
+subtitle.font = Font.mediumSystemFont(15);
 subtitle.textColor = new Color("#6B7280");
 subtitle.centerAlignText();
 
 widget.addSpacer(14);
 
 const data = await loadCSV(CSV_URL);
-
-// Expecting rows after header:
-// Period, Heri, Udi, Grand Total
-
 let grandTotal = 0;
 
 for (let i = 1; i < Math.min(data.length, 5); i++) {
   const row = data[i];
 
   const period = row[0] || "";
-  const heri = toNumber(row[1]);
-  const udi = toNumber(row[2]);
-  const total = toNumber(row[3]);
+  const heri = toNumber(row[2]);
+  const udi = toNumber(row[3]);
+  const total = toNumber(row[4]);
 
   grandTotal += total;
 
@@ -67,7 +61,7 @@ for (let i = 1; i < Math.min(data.length, 5); i++) {
   widget.addSpacer(8);
 }
 
-widget.addSpacer(6);
+widget.addSpacer(4);
 
 const grand = widget.addStack();
 grand.layoutHorizontally();
@@ -98,7 +92,6 @@ function addDriver(parent, name, amount, colorHex) {
   box.backgroundColor = new Color("#F9FAFB");
   box.cornerRadius = 10;
   box.setPadding(8, 10, 8, 10);
-  box.size = new Size(0, 55);
 
   const line = box.addStack();
   line.layoutHorizontally();
@@ -131,7 +124,7 @@ async function loadCSV(url) {
 function parseCSV(csv) {
   return csv
     .trim()
-    .split("\n")
+    .split(/\r?\n/)
     .map(row => row.split(",").map(cell => cell.replace(/^"|"$/g, "").trim()));
 }
 
