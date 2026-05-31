@@ -1,3 +1,5 @@
+console.log("WIDGET VERSION 2026-06-01-01");
+
 const CSV_URL = "https://docs.google.com/spreadsheets/d/1SemeSAuE7FW4xEEj1jqn_vnI9Bd6gYCvcoHJxBmeUK4/export?format=csv&gid=1011119762";
 
 const widget = new ListWidget();
