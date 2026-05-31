@@ -1,7 +1,7 @@
 // Driver Last 4 Weeks Widget
 // Google Sheet tab should have: Period | Heri | Udi | Grand Total
 
-const CSV_URL = "PASTE_CSV_URL_HERE";
+const CSV_URL = "https://docs.google.com/spreadsheets/d/1SemeSAuE7FW4xEEj1jqn_vnI9Bd6gYCvcoHJxBmeUK4/edit?gid=1011119762#gid=1011119762";
 
 const widget = new ListWidget();
 widget.backgroundColor = new Color("#F7F4EF");
