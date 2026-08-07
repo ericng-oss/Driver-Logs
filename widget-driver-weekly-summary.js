@@ -30,7 +30,6 @@ headerRow.layoutHorizontally();
 
 const periodHeader = headerRow.addStack();
 periodHeader.size = new Size(periodWidth, 0);
-periodHeader.leftAlignContent();
 const periodHeaderText = periodHeader.addText("PERIOD");
 periodHeaderText.textColor = Color.white();
 periodHeaderText.font = Font.boldSystemFont(10);
@@ -38,7 +37,6 @@ periodHeaderText.leftAlignText();
 
 const heriHeaderStack = headerRow.addStack();
 heriHeaderStack.size = new Size(colWidth, 0);
-heriHeaderStack.leftAlignContent();
 const heriHeader = heriHeaderStack.addText("HERI");
 heriHeader.textColor = new Color("#1FA463");
 heriHeader.font = Font.boldSystemFont(10);
@@ -46,7 +44,6 @@ heriHeader.leftAlignText();
 
 const udiHeaderStack = headerRow.addStack();
 udiHeaderStack.size = new Size(colWidth, 0);
-udiHeaderStack.leftAlignContent();
 const udiHeader = udiHeaderStack.addText("UDI");
 udiHeader.textColor = new Color("#F59E0B");
 udiHeader.font = Font.boldSystemFont(10);
@@ -54,7 +51,6 @@ udiHeader.leftAlignText();
 
 const totalHeaderStack = headerRow.addStack();
 totalHeaderStack.size = new Size(colWidth, 0);
-totalHeaderStack.leftAlignContent();
 const totalHeader = totalHeaderStack.addText("TOTAL");
 totalHeader.textColor = new Color("#C7D3D5");
 totalHeader.font = Font.boldSystemFont(10);
@@ -70,7 +66,6 @@ for (const row of data.rows.slice(0, 3)) {
 
   const periodStack = rowStack.addStack();
   periodStack.size = new Size(periodWidth, 0);
-  periodStack.leftAlignContent();
   const periodText = periodStack.addText(row.period);
   periodText.textColor = Color.white();
   periodText.font = Font.systemFont(11);
@@ -78,7 +73,6 @@ for (const row of data.rows.slice(0, 3)) {
 
   const heriStack = rowStack.addStack();
   heriStack.size = new Size(colWidth, 0);
-  heriStack.leftAlignContent();
   const heriText = heriStack.addText(shortIDR(row.heri));
   heriText.textColor = new Color("#1FA463");
   heriText.font = Font.mediumSystemFont(12);
@@ -86,7 +80,6 @@ for (const row of data.rows.slice(0, 3)) {
 
   const udiStack = rowStack.addStack();
   udiStack.size = new Size(colWidth, 0);
-  udiStack.leftAlignContent();
   const udiText = udiStack.addText(shortIDR(row.udi));
   udiText.textColor = new Color("#F59E0B");
   udiText.font = Font.mediumSystemFont(12);
@@ -94,7 +87,6 @@ for (const row of data.rows.slice(0, 3)) {
 
   const totalStack = rowStack.addStack();
   totalStack.size = new Size(colWidth, 0);
-  totalStack.leftAlignContent();
   const totalText = totalStack.addText(shortIDR(row.total));
   totalText.textColor = new Color("#C7D3D5");
   totalText.font = Font.mediumSystemFont(12);
