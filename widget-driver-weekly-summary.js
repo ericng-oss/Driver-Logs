@@ -12,12 +12,6 @@ const title = widget.addText("WEEKLY SUMMARY");
 title.textColor = Color.white();
 title.font = Font.boldSystemFont(20);
 
-widget.addSpacer(4);
-
-const subtitle = widget.addText("Last 4 weeks");
-subtitle.textColor = new Color("#C7D3D5");
-subtitle.font = Font.systemFont(13);
-
 widget.addSpacer(16);
 
 // Column header row
@@ -49,9 +43,13 @@ for (const row of data.rows) {
   rowStack.layoutHorizontally();
   rowStack.centerAlignContent();
 
-  const periodText = rowStack.addText(row.period);
+  const periodStack = rowStack.addStack();
+  periodStack.size = new Size(64, 0);
+
+  const periodText = periodStack.addText(row.period);
   periodText.textColor = Color.white();
   periodText.font = Font.systemFont(12);
+  periodText.leftAlignText();
 
   rowStack.addSpacer();
 
@@ -76,13 +74,13 @@ footer.layoutHorizontally();
 
 const label = footer.addText("GRAND TOTAL");
 label.textColor = new Color("#C7D3D5");
-label.font = Font.boldSystemFont(14);
+label.font = Font.boldSystemFont(12);
 
 footer.addSpacer();
 
 const amount = footer.addText("Rp " + formatIDR(data.grandTotal));
 amount.textColor = Color.white();
-amount.font = Font.boldSystemFont(18);
+amount.font = Font.boldSystemFont(12);
 
 widget.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
 
