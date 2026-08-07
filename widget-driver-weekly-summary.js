@@ -4,7 +4,7 @@ const req = new Request(url);
 const data = await req.loadJSON();
 
 const widget = new ListWidget();
-widget.backgroundColor = new Color("#5e6e64");
+widget.backgroundColor = new Color("#66706b");
 widget.setPadding(16, 14, 16, 14);
 
 // Header
@@ -19,7 +19,7 @@ const headerRow = widget.addStack();
 headerRow.layoutHorizontally();
 
 const periodHeader = headerRow.addText("PERIOD");
-periodHeader.textColor = new Color("#86868b");
+periodHeader.textColor = Color.white();
 periodHeader.font = Font.boldSystemFont(10);
 periodHeader.leftAlignText();
 
@@ -50,11 +50,11 @@ for (const row of data.rows.slice(0, 3)) {
   rowStack.centerAlignContent();
 
   const periodStack = rowStack.addStack();
-  periodStack.size = new Size(64, 0);
+  periodStack.size = new Size(46, 0);
 
   const periodText = periodStack.addText(row.period);
   periodText.textColor = Color.white();
-  periodText.font = Font.systemFont(12);
+  periodText.font = Font.systemFont(11);
   periodText.leftAlignText();
 
   rowStack.addSpacer();
@@ -63,13 +63,13 @@ for (const row of data.rows.slice(0, 3)) {
   heriText.textColor = new Color("#1FA463");
   heriText.font = Font.mediumSystemFont(12);
 
-  rowStack.addSpacer(14);
+  rowStack.addSpacer(10);
 
   const udiText = rowStack.addText(shortIDR(row.udi));
   udiText.textColor = new Color("#F59E0B");
   udiText.font = Font.mediumSystemFont(12);
 
-  rowStack.addSpacer(14);
+  rowStack.addSpacer(10);
 
   const totalText = rowStack.addText(shortIDR(row.total));
   totalText.textColor = new Color("#C7D3D5");
