@@ -14,7 +14,7 @@ title.font = Font.boldSystemFont(22);
 
 const week = widget.addText(data.week);
 week.textColor = new Color("#C7D3D5");
-week.font = Font.systemFont(18);
+week.font = Font.systemFont(16);
 
 widget.addSpacer(20);
 
