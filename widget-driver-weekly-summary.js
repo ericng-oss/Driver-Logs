@@ -4,7 +4,7 @@ const req = new Request(url);
 const data = await req.loadJSON();
 
 const widget = new ListWidget();
-widget.backgroundColor = new Color("#314F52");
+widget.backgroundColor = new Color("#5e6e64");
 widget.setPadding(16, 14, 16, 14);
 
 // Header
@@ -35,10 +35,16 @@ const udiHeader = headerRow.addText("UDI");
 udiHeader.textColor = new Color("#F59E0B");
 udiHeader.font = Font.boldSystemFont(10);
 
+headerRow.addSpacer(10);
+
+const totalHeader = headerRow.addText("TOTAL");
+totalHeader.textColor = new Color("#C7D3D5");
+totalHeader.font = Font.boldSystemFont(10);
+
 widget.addSpacer(8);
 
 // Rows
-for (const row of data.rows) {
+for (const row of data.rows.slice(0, 3)) {
   const rowStack = widget.addStack();
   rowStack.layoutHorizontally();
   rowStack.centerAlignContent();
@@ -63,24 +69,14 @@ for (const row of data.rows) {
   udiText.textColor = new Color("#F59E0B");
   udiText.font = Font.mediumSystemFont(12);
 
+  rowStack.addSpacer(14);
+
+  const totalText = rowStack.addText(shortIDR(row.total));
+  totalText.textColor = new Color("#C7D3D5");
+  totalText.font = Font.mediumSystemFont(12);
+
   widget.addSpacer(8);
 }
-
-widget.addSpacer(10);
-
-// Footer
-const footer = widget.addStack();
-footer.layoutHorizontally();
-
-const label = footer.addText("GRAND TOTAL");
-label.textColor = new Color("#C7D3D5");
-label.font = Font.boldSystemFont(12);
-
-footer.addSpacer();
-
-const amount = footer.addText("Rp " + formatIDR(data.grandTotal));
-amount.textColor = Color.white();
-amount.font = Font.boldSystemFont(12);
 
 widget.refreshAfterDate = new Date(Date.now() + 15 * 60 * 1000);
 
