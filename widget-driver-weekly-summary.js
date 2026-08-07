@@ -19,7 +19,7 @@ const headerRow = widget.addStack();
 headerRow.layoutHorizontally();
 
 const periodHeader = headerRow.addStack();
-periodHeader.size = new Size(58, 0);
+periodHeader.size = new Size(78, 0);
 const periodHeaderText = periodHeader.addText("PERIOD");
 periodHeaderText.textColor = Color.white();
 periodHeaderText.font = Font.boldSystemFont(10);
@@ -55,7 +55,7 @@ for (const row of data.rows.slice(0, 3)) {
   rowStack.centerAlignContent();
 
   const periodStack = rowStack.addStack();
-  periodStack.size = new Size(58, 0);
+  periodStack.size = new Size(78, 0);
   const periodText = periodStack.addText(row.period);
   periodText.textColor = Color.white();
   periodText.font = Font.systemFont(11);
