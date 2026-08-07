@@ -152,13 +152,16 @@ key: d.toLocaleDateString("en-GB")
 return dates;
 }
 
-function parseDDMMYYYY(str) {
-const parts = String(str || "").trim().split("/");
-if (parts.length !== 3) return null;
+function parseLogDate(str) {
+const parts = String(str || "").trim().split(" ");
+if (parts.length < 2) return null;
 
-const day = parseInt(parts[0], 10);
-const month = parseInt(parts[1], 10) - 1;
-const year = parseInt(parts[2], 10);
+const dmy = parts[1].split("/");
+if (dmy.length < 2) return null;
+
+const day = parseInt(dmy[0], 10);
+const month = parseInt(dmy[1], 10) - 1;
+const year = dmy[2] ? parseInt(dmy[2], 10) : new Date().getFullYear();
 
 if (isNaN(day) || isNaN(month) || isNaN(year)) return null;
 return { day, month, year };
@@ -168,7 +171,7 @@ function findLogForDate(logs, day) {
 if (!logs) return null;
 
 return logs.find(log => {
-const parsed = parseDDMMYYYY(log.date);
+const parsed = parseLogDate(log.date);
 if (!parsed) return false;
 
 return parsed.day === day.dayNum &&
