@@ -28,33 +28,41 @@ widget.addSpacer(16);
 const headerRow = widget.addStack();
 headerRow.layoutHorizontally();
 
+// PERIOD - left aligned (spacer after text)
 const periodHeader = headerRow.addStack();
 periodHeader.size = new Size(periodWidth, 0);
+periodHeader.layoutHorizontally();
 const periodHeaderText = periodHeader.addText("PERIOD");
 periodHeaderText.textColor = Color.white();
 periodHeaderText.font = Font.boldSystemFont(10);
-periodHeaderText.leftAlignText();
+periodHeader.addSpacer();
 
+// HERI - left aligned
 const heriHeaderStack = headerRow.addStack();
 heriHeaderStack.size = new Size(colWidth, 0);
+heriHeaderStack.layoutHorizontally();
 const heriHeader = heriHeaderStack.addText("HERI");
 heriHeader.textColor = new Color("#1FA463");
 heriHeader.font = Font.boldSystemFont(10);
-heriHeader.leftAlignText();
+heriHeaderStack.addSpacer();
 
+// UDI - left aligned
 const udiHeaderStack = headerRow.addStack();
 udiHeaderStack.size = new Size(colWidth, 0);
+udiHeaderStack.layoutHorizontally();
 const udiHeader = udiHeaderStack.addText("UDI");
 udiHeader.textColor = new Color("#F59E0B");
 udiHeader.font = Font.boldSystemFont(10);
-udiHeader.leftAlignText();
+udiHeaderStack.addSpacer();
 
+// TOTAL - right aligned (spacer before text)
 const totalHeaderStack = headerRow.addStack();
 totalHeaderStack.size = new Size(colWidth, 0);
+totalHeaderStack.layoutHorizontally();
+totalHeaderStack.addSpacer();
 const totalHeader = totalHeaderStack.addText("TOTAL");
 totalHeader.textColor = new Color("#C7D3D5");
 totalHeader.font = Font.boldSystemFont(10);
-totalHeader.leftAlignText();
 
 widget.addSpacer(8);
 
@@ -64,33 +72,41 @@ for (const row of data.rows.slice(0, 3)) {
   rowStack.layoutHorizontally();
   rowStack.centerAlignContent();
 
+  // PERIOD - left aligned
   const periodStack = rowStack.addStack();
   periodStack.size = new Size(periodWidth, 0);
+  periodStack.layoutHorizontally();
   const periodText = periodStack.addText(row.period);
   periodText.textColor = Color.white();
   periodText.font = Font.systemFont(11);
-  periodText.leftAlignText();
+  periodStack.addSpacer();
 
+  // HERI - left aligned
   const heriStack = rowStack.addStack();
   heriStack.size = new Size(colWidth, 0);
+  heriStack.layoutHorizontally();
   const heriText = heriStack.addText(shortIDR(row.heri));
   heriText.textColor = new Color("#1FA463");
   heriText.font = Font.mediumSystemFont(12);
-  heriText.leftAlignText();
+  heriStack.addSpacer();
 
+  // UDI - left aligned
   const udiStack = rowStack.addStack();
   udiStack.size = new Size(colWidth, 0);
+  udiStack.layoutHorizontally();
   const udiText = udiStack.addText(shortIDR(row.udi));
   udiText.textColor = new Color("#F59E0B");
   udiText.font = Font.mediumSystemFont(12);
-  udiText.leftAlignText();
+  udiStack.addSpacer();
 
+  // TOTAL - right aligned
   const totalStack = rowStack.addStack();
   totalStack.size = new Size(colWidth, 0);
+  totalStack.layoutHorizontally();
+  totalStack.addSpacer();
   const totalText = totalStack.addText(shortIDR(row.total));
   totalText.textColor = new Color("#C7D3D5");
   totalText.font = Font.mediumSystemFont(12);
-  totalText.leftAlignText();
 
   widget.addSpacer(8);
 }
