@@ -152,13 +152,10 @@ return dates;
 
 function findLogForDate(logs, day) {
   if (!logs) return null;
-  
+
   return logs.find(log => {
-  const logDate = String(log.date || "").toLowerCase();
-  
-  return logDate.includes(day.label.toLowerCase()) ||
-  logDate.includes(day.key) ||
-  logDate.includes(String(day.dayNum));
+    const logDate = String(log.date || "").trim();
+    return logDate === day.key;
   });
 }
 
