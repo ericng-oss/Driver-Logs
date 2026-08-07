@@ -8,7 +8,7 @@ widget.backgroundColor = new Color("#314F52");
 widget.setPadding(-25, 12, 0, 12);
 
 // Header
-const title = widget.addText("DRIVER SUMMARY");
+const title = widget.addText("DRIVER SUMMARYss");
 title.textColor = Color.white();
 title.font = Font.boldSystemFont(22);
 
